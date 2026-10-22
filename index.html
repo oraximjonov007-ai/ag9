@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EDU HACK — Samarali o’qish laboratoriyasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F4FF;--sf:#fff;--ink:#1B1A4B;--mut:#5B5A86;--ln:#DAD6F5;--vi:#5B3DF5;--vs:#E9E4FF;--mk:#FFD23F;--mt:#0FA89A;--onv:#fff;--gr:rgba(91,61,245,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E0D26;--sf:#1A1941;--ink:#F1EFFF;--mut:#B3B0E0;--ln:#34326A;--vi:#8B73FF;--vs:#27256A;--mt:#2DD4BF;--onv:#0E0D26;--gr:rgba(139,115,255,.1);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E0D26;--sf:#1A1941;--ink:#F1EFFF;--mut:#B3B0E0;--ln:#34326A;--vi:#8B73FF;--vs:#27256A;--mt:#2DD4BF;--onv:#0E0D26;--gr:rgba(139,115,255,.1);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg) linear-gradient(var(--gr) 1px,transparent 1px) 0 0/36px 36px;color:var(--ink);font:400 17px/1.6 Onest,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,var(--gr) 1px,transparent 1px) 0 0/36px 36px;pointer-events:none}
+h1,h2,h3{font-family:Unbounded,"Trebuchet MS",system-ui,sans-serif;line-height:1.15;margin:0}
+.w{max-width:1040px;margin:0 auto;padding:0 22px;position:relative}
+section{padding:64px 0}
+h2{font-size:clamp(26px,4.4vw,40px);font-weight:700;margin-bottom:12px}
+.ld{color:var(--mut);max-width:56ch;margin:0 0 30px}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+nav{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--ln)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:58px}
+.lg{font:800 18px Unbounded,sans-serif;color:var(--ink);text-decoration:none}
+.lg b{background:var(--mk);color:#1B1A4B;padding:1px 7px;border-radius:6px;margin-left:3px}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+nav a:not(.lg){color:var(--mut);text-decoration:none;font-weight:500;font-size:15px}
+nav a:not(.lg):hover{color:var(--vi)}
+#pg{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--vi),var(--mt),var(--mk))}
+@media(max-width:760px){nav ul{display:none}}
+a:focus-visible,button:focus-visible{outline:3px solid var(--vi);outline-offset:3px;border-radius:8px}
+/* hero */
+.hero{padding:70px 0 40px;position:relative}
+.tg{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:14px;color:var(--vi);background:var(--vs);padding:7px 14px;border-radius:99px;margin-bottom:24px}
+.tg i{width:8px;height:8px;border-radius:50%;background:var(--mt);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.8);opacity:.4}}
+.hero h1{font-size:clamp(38px,8vw,84px);font-weight:800;letter-spacing:-.02em}
+.wd{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.wd>span{display:inline-block;transform:translateY(110%);animation:up .8s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes up{to{transform:none}}
+.mk{background:linear-gradient(var(--mk),var(--mk)) no-repeat 0 90%/0% .42em;animation:sw 1s 1.3s cubic-bezier(.7,0,.2,1) forwards;padding:0 .06em}
+.mk.s{animation:none;transition:background-size 1s .2s}.mk.s.in{background-size:100% .42em}
+@keyframes sw{to{background-size:100% .42em}}
+.hero p{font-size:clamp(18px,2.3vw,22px);max-width:36ch;margin:24px 0 32px;color:var(--mut)}
+.bt{display:flex;gap:12px;flex-wrap:wrap}
+.b{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:14px;font:600 16px Onest,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s;will-change:transform}
+.b.p{background:var(--vi);color:var(--onv)}.b.y{background:var(--mk);color:#1B1A4B}.b.o{border-color:var(--ln);color:var(--ink);background:transparent}
+.b:hover{box-shadow:0 12px 26px -10px var(--vi)}
+.sh{position:absolute;border-radius:50%;pointer-events:none;transition:transform .3s ease-out}
+.sh.a{width:170px;height:170px;background:var(--mt);opacity:.8;right:12%;top:30px;filter:blur(1px)}
+.sh.b2{width:110px;height:110px;background:var(--mk);right:3%;top:210px;border-radius:30%;animation:rot 14s linear infinite}
+.sh.c{width:70px;height:70px;border:5px solid var(--vi);right:26%;top:250px}
+.sh.d{width:240px;height:240px;background:var(--vi);opacity:.16;right:-40px;top:-30px;filter:blur(30px)}
+@keyframes rot{to{rotate:360deg}}
+@media(max-width:760px){.sh.a,.sh.c{display:none}.sh.b2{top:10px;right:10px;width:70px;height:70px}}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:46px}
+.st div{background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:16px 18px}
+.st b{display:block;font:800 32px Unbounded,sans-serif;color:var(--vi)}
+.st span{color:var(--mut);font-size:14px}
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid var(--ln);background:var(--vs);padding:14px 0;white-space:nowrap}
+.mq div{display:inline-flex;gap:34px;animation:mq 30s linear infinite;font:600 15px Unbounded,sans-serif;color:var(--vi)}
+.mq span::before{content:"";display:inline-block;width:10px;height:10px;background:var(--mk);border-radius:3px;margin-right:34px;rotate:45deg}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* cards */
+.g{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.c{background:var(--sf);border:1.5px solid var(--ln);border-radius:22px;padding:24px;transition:border-color .25s,box-shadow .25s;transform-style:preserve-3d}
+.c:hover{border-color:var(--vi);box-shadow:0 18px 40px -22px var(--vi)}
+.ic{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;font-size:26px;background:var(--vs);color:var(--vi);margin-bottom:14px;transition:transform .4s}
+.c:hover .ic{transform:rotate(-10deg) scale(1.12)}
+.c h3{font-size:17px;margin-bottom:6px}.c p{margin:0;color:var(--mut);font-size:15px}
+.ic.y{background:color-mix(in srgb,var(--mk) 35%,transparent);color:#8a6400}.ic.m{background:color-mix(in srgb,var(--mt) 22%,transparent);color:var(--mt)}
+/* flashcard */
+.lab{display:grid;gap:30px;grid-template-columns:1fr 1fr;align-items:center}
+@media(max-width:760px){.lab{grid-template-columns:1fr}}
+.fc{perspective:1100px;height:250px;cursor:pointer;border:0;background:none;padding:0;width:100%;text-align:left;font:inherit;color:inherit}
+.fi{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.fc.f .fi{transform:rotateY(180deg)}
+.fa,.fb{position:absolute;inset:0;border-radius:26px;padding:26px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.fa{background:var(--sf);border:2px solid var(--ln)}.fb{background:var(--vi);color:var(--onv);transform:rotateY(180deg)}
+.fa h3,.fb h3{font-size:24px}.fb p{margin:0;font-size:19px}
+.hint{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mut)}.fb .hint{color:inherit;opacity:.85}
+.nx{margin-top:16px;display:flex;gap:14px;align-items:center}
+.dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--ln);transition:.3s}.dots i.on{background:var(--vi);width:26px;border-radius:9px}
+/* mentor */
+.pm{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));position:relative}
+.pm .c{position:relative}
+.pm .n{position:absolute;top:18px;right:20px;font:800 34px Unbounded,sans-serif;color:var(--vs)}
+/* meter */
+.mt{display:grid;gap:18px;grid-template-columns:1fr 1fr}
+@media(max-width:760px){.mt{grid-template-columns:1fr}}
+.pn{background:var(--sf);border:2px solid var(--ln);border-radius:24px;padding:26px}
+.q{font:700 19px Unbounded,sans-serif;margin:10px 0 16px}
+.o{display:flex;width:100%;text-align:left;margin-bottom:10px;padding:14px 16px;border-radius:14px;border:2px solid var(--ln);background:transparent;color:var(--ink);font:500 16px Onest,sans-serif;cursor:pointer;transition:transform .2s,border-color .2s,background .3s}
+.o:hover:not(:disabled){border-color:var(--vi);transform:translateX(6px)}
+.o.ok{background:color-mix(in srgb,var(--mt) 28%,transparent);border-color:var(--mt)}
+.o.no{background:color-mix(in srgb,#ff5a6a 26%,transparent);border-color:#ff5a6a;animation:sk .4s}
+@keyframes sk{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.bar{margin-bottom:16px}.bar small{display:flex;justify-content:space-between;font-weight:600;margin-bottom:5px}
+.tr{height:12px;border-radius:9px;background:var(--vs);overflow:hidden;margin-bottom:5px}.fl{height:100%;width:0;border-radius:9px;transition:width 1.5s cubic-bezier(.2,.8,.2,1)}
+.fl.a{background:var(--mut);opacity:.6}.fl.b{background:linear-gradient(90deg,var(--vi),var(--mt))}
+.big{font:800 54px Unbounded,sans-serif;color:var(--vi)}
+/* timeline */
+.tl{position:relative;padding-left:70px}
+.ts{position:relative;padding-bottom:34px}
+.ts::before{content:"";position:absolute;left:-47px;top:46px;width:3px;height:0;background:linear-gradient(var(--vi),var(--mt));transition:height .9s .3s}
+.ts:last-child::before{display:none}.ts.on::before{height:calc(100% - 40px)}
+.ts::after{content:"";position:absolute;left:-47px;top:46px;width:3px;bottom:-6px;background:var(--ln);z-index:-1}.ts:last-child::after{display:none}
+.dt{position:absolute;left:-70px;top:0;width:48px;height:48px;border-radius:50%;background:var(--sf);border:3px solid var(--ln);display:grid;place-items:center;font:700 16px Unbounded,sans-serif;transition:.5s}
+.ts.on .dt{background:var(--vi);border-color:var(--vi);color:var(--onv);box-shadow:0 0 0 8px color-mix(in srgb,var(--vi) 20%,transparent)}
+.ts h3{font-size:18px;margin:6px 0 4px}.ts p{margin:0;color:var(--mut)}
+/* quote */
+.qt{background:var(--vi);color:var(--onv);border-radius:32px;padding:clamp(30px,6vw,64px);position:relative;overflow:hidden}
+.qt::after{content:"";position:absolute;right:-50px;bottom:-60px;width:210px;height:210px;border-radius:50%;background:var(--mk);animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-22px)}}
+.qt blockquote{margin:12px 0 22px;font:700 clamp(24px,4.4vw,42px)/1.22 Unbounded,sans-serif;max-width:20ch;position:relative;z-index:1}
+.qw{display:inline-block;opacity:0;transform:translateY(14px) rotate(3deg);transition:.6s}.qt.in .qw{opacity:1;transform:none}
+.qt .nm{font-size:20px;font-weight:600;position:relative;z-index:1}.qt .rl{opacity:.85;position:relative;z-index:1}
+.cta{text-align:center}.cta .bt{justify-content:center}
+footer{padding:30px 0 46px;text-align:center;color:var(--mut);font-size:14px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.qw{opacity:1;transform:none}.wd>span{transform:none}.mk{background-size:100% .42em}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="layers" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></symbol>
+<symbol id="bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7 15h10"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.5 1.8 4.5 4.5"/></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-7M22 20H2"/></symbol>
+<symbol id="target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.5 2.5-2.5-.5-.5-2.5z"/></symbol>
+<symbol id="repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+<symbol id="flip" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></symbol>
+<symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></symbol>
+</defs></svg>
+
+<nav><div class="w"><a class="lg" href="#top">EDU<b>HACK</b></a>
+<ul><li><a href="#muammo">Muammo</a></li><li><a href="#studylab">Study Lab</a></li><li><a href="#peer">Peer Mentor</a></li><li><a href="#progress">Progress</a></li><li><a href="#reja">Reja</a></li><li><a href="#qatnashing">Qatnashing</a></li></ul></div><div id="pg"></div></nav>
+
+<header class="hero" id="top"><div class="w">
+<div class="sh d"></div><div class="sh a" data-d="30"></div><div class="sh b2" data-d="-45"></div><div class="sh c" data-d="60"></div>
+<span class="tg"><i></i>22-ixtisoslashtirilgan maktab · Ta’lim loyihasi</span>
+<h1 data-split>O‘qishni ko‘p emas, <span class="mk">aqlli</span> qiling.</h1>
+<p>EDU HACK samarali o‘qish usullarini o‘rgatadi va qaysi biri sizga ko‘proq foyda berishini o‘lchaydi.</p>
+<div class="bt"><a class="b p mag" href="#studylab"><svg class="i"><use href="#flask"/></svg>Study Lab’da sinab ko‘rish</a><a class="b o mag" href="#progress"><svg class="i"><use href="#chart"/></svg>Bilimimni tekshirish</a></div>
+<div class="st"><div class="rv"><b data-n="3">0</b><span>asosiy mexanizm</span></div><div class="rv"><b data-n="4">0</b><span>haftalik reja</span></div><div class="rv"><b data-n="15">0</b><span>daqiqalik mashg‘ulot</span></div><div class="rv"><b data-n="5">0</b><span>kuchli sabab</span></div></div>
+</div></header>
+
+<div class="mq" aria-hidden="true"><div><span>Faol eslash</span><span>Feynman usuli</span><span>Oraliqli takrorlash</span><span>Pomodoro</span><span>Tengdosh bilan o‘rganish</span><span>Mind map</span><span>Faol eslash</span><span>Feynman usuli</span><span>Oraliqli takrorlash</span><span>Pomodoro</span><span>Tengdosh bilan o‘rganish</span><span>Mind map</span></div></div>
+
+<section id="muammo"><div class="w">
+<h2 class="rv">Vaqt sarflaymiz, <span class="mk s">natija kam.</span></h2>
+<p class="ld rv">Dars tayyorlashda o‘quvchilar to‘rt joyda qiynaladi.</p>
+<div class="g">
+<div class="c rv tl3"><div class="ic"><svg class="i"><use href="#clock"/></svg></div><h3>Vaqt</h3><p>Reja yo‘q: vaqt behuda ketadi.</p></div>
+<div class="c rv tl3"><div class="ic y"><svg class="i"><use href="#layers"/></svg></div><h3>Murakkab mavzu</h3><p>Tushunmay yodlash foyda bermaydi.</p></div>
+<div class="c rv tl3"><div class="ic m"><svg class="i"><use href="#bulb"/></svg></div><h3>Eslab qolish</h3><p>O‘qilgan narsa tez unutiladi.</p></div>
+<div class="c rv tl3"><div class="ic"><svg class="i"><use href="#search"/></svg></div><h3>Ishonchli manba</h3><p>Qaysi resursga ishonishni bilmaymiz.</p></div>
+</div></div></section>
+
+<section id="studylab"><div class="w"><div class="lab">
+<div><h2 class="rv">Study Lab: <span class="mk s">o‘zingiz sinab ko‘ring</span></h2>
+<p class="ld rv">Faol eslash, mavzuni o‘z so‘zlari bilan tushuntirish va qisqa takrorlash. Avval javobni o‘ylang, keyin kartani bosing: shu — faol eslash.</p></div>
+<div class="rv"><button class="fc" id="fc" aria-label="Kartani aylantirish"><div class="fi"><div class="fa"><div class="hint" id="fn"></div><h3 id="fq"></h3><div class="hint"><svg class="i"><use href="#flip"/></svg>Javobni ko‘rish uchun bosing</div></div><div class="fb"><div class="hint">Javob</div><p id="fan"></p><div class="hint"><svg class="i"><use href="#flip"/></svg>Qaytish uchun bosing</div></div></div></button>
+<div class="nx"><button class="b y" id="nx">Keyingi savol<svg class="i"><use href="#arr"/></svg></button><div class="dots" id="dots"></div></div></div>
+</div></div></section>
+
+<section id="peer"><div class="w">
+<h2 class="rv">Peer Mentor: <span class="mk s">tengdoshdan o‘rganing</span></h2>
+<p class="ld rv">Mavzuni yaxshi biladigan o‘quvchi boshqalarga qisqa, rejali dars o‘tadi.</p>
+<div class="pm">
+<div class="c rv tl3"><span class="n">1</span><div class="ic"><svg class="i"><use href="#user"/></svg></div><h3>Mentor tanlanadi</h3><p>Mavzuni yaxshi tushunadigan o‘quvchi.</p></div>
+<div class="c rv tl3"><span class="n">2</span><div class="ic y"><svg class="i"><use href="#clock"/></svg></div><h3>15 daqiqalik reja</h3><p>Bitta mavzu, aniq maqsad.</p></div>
+<div class="c rv tl3"><span class="n">3</span><div class="ic m"><svg class="i"><use href="#users"/></svg></div><h3>Kichik guruh</h3><p>3–5 kishi, savol-javob bilan.</p></div>
+</div></div></section>
+
+<section id="progress"><div class="w">
+<h2 class="rv">Progress Meter: <span class="mk s">o‘sishni o‘lchaymiz</span></h2>
+<p class="ld rv">Mashg‘ulotdan oldin va keyin bir xil test. Shaxsiy natijalar oshkor qilinmaydi.</p>
+<div class="mt">
+<div class="pn rv" id="tq"></div>
+<div class="pn rv" id="bars"><h3 style="font-size:19px">Oldin va keyin</h3><p style="margin:4px 0 18px;color:var(--mut);font-size:14px">Namuna ma’lumotlar</p>
+<div class="bar"><small><span>Matematika</span><span data-n="78">0%</span></small><div class="tr"><div class="fl a" data-w="42"></div></div><div class="tr"><div class="fl b" data-w="78"></div></div></div>
+<div class="bar"><small><span>Biologiya</span><span data-n="82">0%</span></small><div class="tr"><div class="fl a" data-w="51"></div></div><div class="tr"><div class="fl b" data-w="82"></div></div></div>
+<div class="bar"><small><span>Tarix</span><span data-n="70">0%</span></small><div class="tr"><div class="fl a" data-w="38"></div></div><div class="tr"><div class="fl b" data-w="70"></div></div></div>
+<small style="color:var(--mut)">Kulrang — oldin, rangli — keyin</small></div>
+</div></div></section>
+
+<section id="reja"><div class="w">
+<h2 class="rv">4 hafta — <span class="mk s">to‘liq sikl</span></h2>
+<p class="ld rv">Har hafta bitta vazifa, oxirida aniq xulosa.</p>
+<div class="tl">
+<div class="ts"><div class="dt">1</div><h3>1-hafta · So‘rovnoma</h3><p>O‘quvchilarning qiyinchiliklari aniqlanadi.</p></div>
+<div class="ts"><div class="dt">2</div><h3>2-hafta · Usullar va mentorlar</h3><p>Samarali usullar sinaladi, mentorlar tanlanadi.</p></div>
+<div class="ts"><div class="dt">3</div><h3>3-hafta · Guruh mashg‘ulotlari</h3><p>Kichik guruhlarda darslar o‘tkaziladi.</p></div>
+<div class="ts"><div class="dt">4</div><h3>4-hafta · Xulosa</h3><p>Test natijalari solishtirilib, xulosa chiqariladi.</p></div>
+</div></div></section>
+
+<section><div class="w">
+<h2 class="rv">Shahar bosqichi uchun <span class="mk s">5 sabab</span></h2>
+<div class="g" style="margin-top:24px">
+<div class="c rv tl3"><div class="ic"><svg class="i"><use href="#target"/></svg></div><h3>Muammo aniq</h3><p>O‘quvchilarning real qiyinchiliklari.</p></div>
+<div class="c rv tl3"><div class="ic y"><svg class="i"><use href="#tool"/></svg></div><h3>Yechim amaliy</h3><p>Mablag‘, maxsus xona va murakkab texnologiya shart emas.</p></div>
+<div class="c rv tl3"><div class="ic m"><svg class="i"><use href="#chart"/></svg></div><h3>Natija isbotlanadi</h3><p>Oldin/keyin testlar, qatnashuv, fikrlar.</p></div>
+<div class="c rv tl3"><div class="ic"><svg class="i"><use href="#repeat"/></svg></div><h3>Davomiy</h3><p>Bir martalik tadbir emas — tizim.</p></div>
+<div class="c rv tl3"><div class="ic y"><svg class="i"><use href="#user"/></svg></div><h3>O‘quvchi boshqaradi</h3><p>9-sinf o‘quvchisi yuritadi.</p></div>
+</div></div></section>
+
+<section><div class="w"><div class="qt" id="qt">
+<div class="nm" style="font-family:Unbounded,sans-serif;font-size:15px;opacity:.9;position:relative;z-index:1">Loyiha muallifi</div>
+<blockquote id="qb">Har bir o‘quvchi — imkoniyat, har bir g‘oya — kelajak!</blockquote>
+<div class="nm">Abdukaimova Go‘zal</div><div class="rl">9-A sinf · Ta’lim koordinatori<br>22-ixtisoslashtirilgan umumta’lim maktabi</div>
+</div></div></section>
+
+<section id="qatnashing" class="cta"><div class="w">
+<h2 class="rv">Qatnashing</h2><p class="ld rv" style="margin-inline:auto">Bugun bitta usulni sinab ko‘ring.</p>
+<div class="bt rv"><a class="b p mag" href="#studylab"><svg class="i"><use href="#flask"/></svg>Study Lab’da sinab ko‘rish</a><a class="b y mag" href="#peer"><svg class="i"><use href="#heart"/></svg>Peer Mentor bo‘lish</a></div>
+</div></section>
+<footer>EDU HACK · 22-ixtisoslashtirilgan umumta’lim maktabi · 9-A sinf</footer>
+
+<script>
+(function(){
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+/* split hero headline into words */
+var h=$('[data-split]');var k=0;
+function sp(n){$$(':scope>*,:scope',n);}
+Array.prototype.slice.call(h.childNodes).forEach(function(n){
+ if(n.nodeType===3){var f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(function(t){if(!t.trim()){f.appendChild(document.createTextNode(t));return}var w=document.createElement('span');w.className='wd';w.innerHTML='<span style="animation-delay:'+(k++*90)+'ms">'+t+'</span>';f.appendChild(w)});n.replaceWith(f)}
+ else{var w=document.createElement('span');w.className='wd';var inner=n.cloneNode(true);inner.style.display='inline-block';var s=document.createElement('span');s.style.animationDelay=(k++*90)+'ms';s.appendChild(inner);w.appendChild(s);n.replaceWith(w)}
+});
+$$('.wd>span').forEach(function(s){s.style.display='inline-block'});
+/* quote words */
+var qb=$('#qb');qb.innerHTML=qb.textContent.split(' ').map(function(w,i){return '<span class="qw" style="transition-delay:'+i*110+'ms">'+w+'</span>'}).join(' ');
+/* count up */
+function cnt(el,to,ms){var t0=performance.now(),suf=el.dataset.suf||(el.textContent.indexOf('%')>-1||el.parentNode.tagName==='SMALL'?'%':'');(function f(t){var p=Math.min((t-t0)/ms,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(f)})(t0)}
+/* observers */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');io.unobserve(t);
+ $$('[data-n]',t).forEach(function(n){cnt(n,+n.dataset.n,1500)});if(t.dataset&&t.dataset.n)cnt(t,+t.dataset.n,1500);
+ if(t.id==='bars')$$('.fl',t).forEach(function(f){f.style.width=f.dataset.w+'%'});
+ if(t.classList.contains("ts"))t.classList.add("on");
+})},{threshold:.2});
+$$(".rv,.mk.s,.ts,#qt").forEach(function(e,i){if(e.classList.contains('rv'))e.style.transitionDelay=(i%4)*80+'ms';io.observe(e)});
+/* scroll progress */
+var pg=$('#pg');function sc(){var d=document.documentElement;pg.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'}addEventListener('scroll',sc,{passive:true});sc();
+/* parallax */
+var sh=$$('.sh[data-d]');addEventListener('mousemove',function(e){var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;sh.forEach(function(s){var d=+s.dataset.d;s.style.transform='translate('+x*d+'px,'+y*d+'px)'})});
+/* tilt + magnet */
+$$('.tl3').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transition='border-color .25s,box-shadow .25s';c.style.transform='perspective(700px) rotateX('+(-y*8)+'deg) rotateY('+(x*8)+'deg) translateY(-4px)'});c.addEventListener('mouseleave',function(){c.style.transition='transform .5s,border-color .25s,box-shadow .25s';c.style.transform=''})});
+$$('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.18+'px,'+(e.clientY-r.top-r.height/2)*.25+'px)'});b.addEventListener('mouseleave',function(){b.style.transform=''})});
+/* flashcards */
+var C=[["Faol eslash nima?","Javobni ko‘rmasdan, xotiradan eslashga urinish. Qayta o‘qishdan ko‘ra kuchliroq usul."],["Feynman usuli nima?","Mavzuni o‘z so‘zlaringiz bilan, sodda tilda tushuntirish. Qayerda to‘xtasangiz, o‘sha joy bo‘sh."],["Oraliqli takrorlash nima?","Takrorlashni bir kunga emas, 1, 3, 7 kunlik oraliqlarga bo‘lish."],["Pomodoro nima?","25 daqiqa to‘liq diqqat, keyin 5 daqiqa tanaffus."]],ci=0,fc=$('#fc');
+$('#dots').innerHTML=C.map(function(){return '<i></i>'}).join('');
+function show(){fc.classList.remove('f');setTimeout(function(){$('#fq').textContent=C[ci][0];$('#fan').textContent=C[ci][1];$('#fn').textContent='Savol '+(ci+1)+' / '+C.length;$$('#dots i').forEach(function(d,i){d.className=i===ci?'on':''})},fc.classList.contains('f')?300:0)}
+fc.onclick=function(){fc.classList.toggle('f')};$('#nx').onclick=function(){ci=(ci+1)%C.length;show()};show();
+/* mini test */
+var Q=[["Eng samarali eslab qolish usuli qaysi?",["Qayta o‘qish","Faol eslash","Tagiga chizish"],1],["Mavzuni tushunganingizni qanday tekshirasiz?",["Konspektni ko‘chirib","O‘z so‘zlaringiz bilan tushuntirib","Faqat yodlab"],1],["Takrorlash qachon samaraliroq?",["Imtihondan bir kun oldin","Kunlarga bo‘lib, oraliq bilan","Takrorlash shart emas"],1]],qi=0,sc2=0,tq=$('#tq');
+function rq(){if(qi>=Q.length){var p=Math.round(sc2/Q.length*100);tq.innerHTML='<span style="color:var(--mut)">Natijangiz</span><div class="big" id="bg">0%</div><div class="tr"><div class="fl b" id="rb"></div></div><p style="color:var(--mut)">'+sc2+' / '+Q.length+' to‘g‘ri javob. '+(p>=67?'Zo‘r! Faol eslash ishlayapti.':'Study Lab kartalarini yana bir bor sinab ko‘ring.')+'</p><button class="b p" id="rs"><svg class="i"><use href="#repeat"/></svg>Qayta topshirish</button>';cnt($('#bg'),p,1300);setTimeout(function(){$('#rb').style.width=p+'%'},50);$('#rs').onclick=function(){qi=0;sc2=0;rq()};return}
+ var q=Q[qi];tq.innerHTML='<span class="tg" style="margin:0">Mini test '+(qi+1)+'/'+Q.length+'</span><div class="q">'+q[0]+'</div>'+q[1].map(function(o,i){return '<button class="o" data-i="'+i+'">'+o+'</button>'}).join('');
+ $$('.o',tq).forEach(function(b){b.onclick=function(){var i=+b.dataset.i;$$('.o',tq).forEach(function(x){x.disabled=true});if(i===q[2]){sc2++;b.classList.add('ok')}else{b.classList.add('no');$$('.o',tq)[q[2]].classList.add('ok')}setTimeout(function(){qi++;rq()},1100)}})}
+rq();
+})();
+</script>
+</body>
+</html>
